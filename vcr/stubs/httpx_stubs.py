@@ -2,7 +2,7 @@ import asyncio
 import functools
 import inspect
 import logging
-from unittest.mock import MagicMock, patch
+from unittest.mock import patch
 
 import httpx
 
@@ -72,8 +72,6 @@ def _from_serialized_headers(headers):
     return header_list
 
 
-@patch("httpx.Response.close", MagicMock())
-@patch("httpx.Response.read", MagicMock())
 def _from_serialized_response(request, serialized_response, history=None):
     # Cassette format generated for HTTPX requests by older versions of
     # vcrpy. We restructure the content to resemble what a regular
